@@ -61,8 +61,7 @@ ul li {
 }
 .bg-col3:hover {
   opacity: 0.5;
-  padding: 20px;
-  font-size: 25px;
+  padding: 15px;
   font-weight: bold;
 }
 .center-alignment {
@@ -72,7 +71,7 @@ ul li {
   padding: 10px;
   line-height: 1;
 }
-
-.temp {
-  display: inline;
+.ul-style1 {
+  line-height: 2;
+  padding: 10px;
 }
