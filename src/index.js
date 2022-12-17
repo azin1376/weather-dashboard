@@ -4,8 +4,8 @@ function getCity(event) {
   searchCity(searchInput);
 }
 function searchCity(city) {
-  let apiKey = `be81f193e065bf5feb2d944c7336968b`;
-  let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = `3a95t70b3f0900d6bdaf05do94ea7478`;
+  let weatherUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&apikey=${apiKey}&units=metric`;
   axios.get(weatherUrl).then(showTemp);
 }
 function getLocation(event) {
@@ -13,40 +13,39 @@ function getLocation(event) {
   navigator.geolocation.getCurrentPosition(showLocation);
 }
 function showLocation(position) {
-  console.log(position);
-  let apiKey = "1d038ee28ef2727a9f0310860ac10ae9";
-  let long = position.coords.longitude;
-  let lat = position.coords.latitude;
+  let apiKey = "3a95t70b3f0900d6bdaf05do94ea7478 ";
+  let long = position.coordinates.longitude;
+  let lat = position.coordinates.latitude;
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&untits=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemp);
 }
 function showTemp(response) {
-  document.querySelector("h1").innerHTML = `${response.data.name}`;
+  document.querySelector("h1").innerHTML = `${response.data.city}`;
   document.querySelector("#deg").innerHTML = `${Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   )} °C`;
-  document.querySelector("#h-deg").innerHTML = `H:${Math.round(
-    response.data.main.temp_max
-  )} °C`;
-  document.querySelector("#l-deg").innerHTML = `L:${Math.round(
-    response.data.main.temp_min
-  )} °C`;
-  document.querySelector("#feel").innerHTML = `Feels like:${Math.round(
-    response.data.main.feels_like
-  )} °C`;
+  //document.querySelector("#h-deg").innerHTML = `H:${Math.round(
+  //response.data.main.temp_max
+  //)} °C`;
+  //document.querySelector("#l-deg").innerHTML = `L:${Math.round(
+  //response.data.main.temp_min
+  // )} °C`;
+  //document.querySelector("#feel").innerHTML = `Feels like:${Math.round(
+  //response.data.main.feels_like
+  // )} °C`;
   document.querySelector(
     "#description"
-  ).innerHTML = `${response.data.weather[0].description}`;
+  ).innerHTML = `${response.data.condition.description}`;
   document.querySelector(
     "#wind-speed"
   ).innerHTML = `Wind Speed: ${response.data.wind.speed} km/h`;
   document.querySelector(
     "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  document.querySelector(
-    "#pressure"
-  ).innerHTML = `Main: ${response.data.weather[0].main}`;
+  ).innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
+  //document.querySelector(
+  //"#pressure"
+  //).innerHTML = `Main: ${response.data.condition.description}`;
 }
 let now = new Date();
 let liii = document.querySelector("#day");
@@ -75,4 +74,4 @@ if (hour < 10) {
 liii.innerHTML = `${day} ${hour}:${min}`;
 search.addEventListener("submit", getCity);
 current.addEventListener("click", getLocation);
-searchCity("Ahvaz");
+searchCity("Ahwaz");
