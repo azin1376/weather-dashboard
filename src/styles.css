@@ -59,11 +59,7 @@ ul li {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   line-height: 3;
 }
-.bg-col3:hover {
-  opacity: 0.5;
-  padding: 15px;
-  font-weight: bold;
-}
+
 .center-alignment {
   text-align: center;
 }

@@ -51,7 +51,7 @@ function showTemp(response) {
   ).innerHTML = `${response.data.city}, ${response.data.country}`;
   celsiusTemperture = response.data.temperature.current;
   document.querySelector("#deg").innerHTML = `${Math.round(celsiusTemperture)}`;
- 
+
   document.querySelector("#feel").innerHTML = `Feels like:${Math.round(
     response.data.temperature.feels_like
   )} °C`;
@@ -75,6 +75,12 @@ function showTemp(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+  getForecast(response.data.coordinates);
+}
+function getForecast(coordinates) {
+  let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}`;
+  axios.get(apiUrl).then(desplayForecast);
 }
 function farTemp(event) {
   event.preventDefault();
@@ -91,6 +97,43 @@ function celTemp(event) {
   far.classList.remove("active");
   cel.classList.add("active");
 }
+function desplayForecast(response) {
+  let forecast = response.data.daily;
+  forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-1 bg-col3">
+            <ul class="ul-style1">
+              <li>${formatDay(forecastDay.time)}</li>
+              <li>
+                <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                    forecastDay.icon
+                  }.png"
+                />
+              </li>
+              <li><strong>${forecastDay.temperature.maximum}</strong> <span>${
+          forecastDay.temperature.minimum
+        }</span></li>
+            </ul>
+
+          `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+function formatDay(timesTemp) {
+  let date = new Date(timesTemp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 
 let search = document.querySelector("#search");
 let current = document.querySelector("#current");
@@ -103,3 +146,4 @@ current.addEventListener("click", getLocation);
 
 far.addEventListener("click", farTemp);
 searchCity("Ahvaz");
+desplayForecast();
