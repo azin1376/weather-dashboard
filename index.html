@@ -12,8 +12,12 @@
       crossorigin="anonymous"
     />
     <link href="src/styles.css" rel="stylesheet" />
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.js"
+      integrity="sha512-SXo2rCaEJmbAPoxtaSjW+/hLaVCMAJ1CX8XnIP02x6/LIaWQp4GipKxQhBwL8Tn5U/K+lD9AaM4f4mXJdKnDQw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <div class="container">
@@ -36,7 +40,13 @@
         <div class="row">
           <div class="col bg-col">
             <h1></h1>
-            <h2 id="deg"></h2>
+            <span class="dgree" id="deg"></span>
+            <span class="deg-p"
+              ><a id="cel" href="#" class="active">°C</a>|<a id="far" href="#"
+                >°F</a
+              ></span
+            >
+
             <ul class="ul-style center-alignment">
               <li id="day"></li>
               <li class="temp">
@@ -53,9 +63,7 @@
           <div class="col bg-col2 center-alignment">
             <ul class="ul-style">
               <li>
-                <img
-                  src="images/weather_icons_dovora_interactive/PNG/512/day_partial_cloud.png "
-                />
+                <img id="icon" src="" />
               </li>
               <li id="description">mostly clear</li>
             </ul>
@@ -75,7 +83,7 @@
         </div>
         <span>weekly forecast</span>
         <div class="row">
-          <div class="col bg-col3">
+          <div class="col-1 bg-col3">
             <ul class="ul-style1">
               <li>wed</li>
               <li>
@@ -86,7 +94,7 @@
               <li>28 °C</li>
             </ul>
           </div>
-          <div class="col bg-col3">
+          <div class="col-1 bg-col3">
             <ul class="ul-style1">
               <li>wed</li>
               <li>
@@ -97,7 +105,7 @@
               <li>28 °C</li>
             </ul>
           </div>
-          <div class="col bg-col3">
+          <div class="col-1 bg-col3">
             <ul class="ul-style1">
               <li>wed</li>
               <li>
@@ -108,7 +116,7 @@
               <li>H:28°C L:20°C</li>
             </ul>
           </div>
-          <div class="col bg-col3">
+          <div class="col-1 bg-col3">
             <ul class="ul-style1">
               <li>wed</li>
               <li>
@@ -119,7 +127,7 @@
               <li>28 °C</li>
             </ul>
           </div>
-          <div class="col bg-col3">
+          <div class="col-1 bg-col3">
             <ul class="ul-style1">
               <li>wed</li>
               <li>
@@ -130,7 +138,7 @@
               <li>28 °C</li>
             </ul>
           </div>
-          <div class="col bg-col3">
+          <div class="col-1 bg-col3">
             <ul class="ul-style1">
               <li>wed</li>
               <li>
@@ -141,9 +149,29 @@
               <li>28 °C</li>
             </ul>
           </div>
-        </div>
-      </div>
-    </div>
+          
+          <div class="col-5 r-style">
+            <div class="row ">
+              <div class="col-5 bg-col5" >
+                <div>  paris </div>
+                <div> 19</div>
+            </div>
+            <div class="col-5 bg-col5" >
+                <div>london</div>
+                <div>5</div></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-5 bg-col5">
+                <div>sydney</div>
+                <div>2</div></div>
+              <div class="col-5 bg-col5" >
+                <div>san fransisco</div>
+               <div>15</div>
+              </div>
+            
+          </div>
+       </div>
     <script src="src/index.js"></script>
   </body>
 </html>
