@@ -11,13 +11,13 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link href="src/styles.css" rel="stylesheet" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.js"
       integrity="sha512-SXo2rCaEJmbAPoxtaSjW+/hLaVCMAJ1CX8XnIP02x6/LIaWQp4GipKxQhBwL8Tn5U/K+lD9AaM4f4mXJdKnDQw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <link href="src/styles.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
@@ -52,21 +52,16 @@
               <li class="temp">
                 <hr />
                 <span id="feel"></span>
-                <hr />
-                <span id="h-deg"></span>
-                <hr />
-                <span id="l-deg"> </span>
               </li>
             </ul>
           </div>
 
           <div class="col bg-col2 center-alignment">
-            <ul class="ul-style">
-              <li>
-                <img id="icon" src="" />
-              </li>
-              <li id="description">mostly clear</li>
-            </ul>
+            <div class="spacing">
+              <img id="icon" src="" />
+
+              <div id="description"></div>
+            </div>
           </div>
 
           <div class="col bg-col4 center-alignment">
@@ -81,7 +76,7 @@
             </ul>
           </div>
         </div>
-        <!--<span>weekly forecast</span>
+        <span>weekly forecast</span>
         <div class="row">
           <div class="col-1 bg-col3">
             <ul class="ul-style1">
@@ -171,7 +166,7 @@
               </div>
             
           </div>
-       </div>-->
+       </div>
       </div>
     </div>
     <footer class="foot">

@@ -4,8 +4,8 @@ function getCity(event) {
   searchCity(searchInput);
 }
 function searchCity(city) {
-  let apiKey = `be81f193e065bf5feb2d944c7336968b`;
-  let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = `bd79ao40tde3dec118ca46bc3e6dd55f`;
+  let weatherUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(weatherUrl).then(showTemp);
 }
 function getLocation(event) {
@@ -14,11 +14,11 @@ function getLocation(event) {
 }
 function showLocation(position) {
   console.log(position);
-  let apiKey = "1d038ee28ef2727a9f0310860ac10ae9";
+  let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
   let long = position.coords.longitude;
   let lat = position.coords.latitude;
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&untits=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemp);
 }
 function formatDate(timesTemp) {
@@ -46,37 +46,34 @@ function formatDate(timesTemp) {
   return `Last updated: ${day} ${hour}:${min}`;
 }
 function showTemp(response) {
-  document.querySelector("h1").innerHTML = `${response.data.name}`;
-  celsiusTemperture = response.data.main.temp;
+  document.querySelector(
+    "h1"
+  ).innerHTML = `${response.data.city}, ${response.data.country}`;
+  celsiusTemperture = response.data.temperature.current;
   document.querySelector("#deg").innerHTML = `${Math.round(celsiusTemperture)}`;
-  document.querySelector("#h-deg").innerHTML = `H:${Math.round(
-    response.data.main.temp_max
-  )} °C`;
-  document.querySelector("#l-deg").innerHTML = `L:${Math.round(
-    response.data.main.temp_min
-  )} °C`;
+ 
   document.querySelector("#feel").innerHTML = `Feels like:${Math.round(
-    response.data.main.feels_like
+    response.data.temperature.feels_like
   )} °C`;
   document.querySelector(
     "#description"
-  ).innerHTML = `${response.data.weather[0].description}`;
+  ).innerHTML = `${response.data.condition.description}`;
   document.querySelector(
     "#wind-speed"
   ).innerHTML = `Wind Speed: ${response.data.wind.speed} km/h`;
   document.querySelector(
     "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  ).innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
   document.querySelector(
     "#pressure"
-  ).innerHTML = `Main: ${response.data.weather[0].main}`;
+  ).innerHTML = `Pressure: ${response.data.temperature.pressure}`;
   let liii = document.querySelector("#day");
-  liii.innerHTML = formatDate(response.data.dt * 1000);
+  liii.innerHTML = formatDate(response.data.time * 1000);
   document
     .querySelector("#icon")
     .setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
 }
 function farTemp(event) {

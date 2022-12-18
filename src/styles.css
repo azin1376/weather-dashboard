@@ -112,3 +112,9 @@ ul li {
 .foot {
   text-align: center;
 }
+.spacing {
+  padding: 60px;
+}
+#description:first-letter {
+  text-transform: capitalize;
+}
