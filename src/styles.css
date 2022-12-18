@@ -82,6 +82,7 @@ ul li {
   position: relative;
   bottom: 10px;
   text-decoration: none;
+  font-size: smaller;
 }
 .active {
   text-decoration: none;
@@ -107,4 +108,7 @@ ul li {
   margin: auto;
   padding: 15px;
   box-sizing: border-box;
+}
+.foot {
+  text-align: center;
 }
