@@ -43,11 +43,16 @@ ul li {
 }
 .bg-col3 {
   background-color: #fff;
-  margin: 15px auto;
+  margin: 20px auto;
   border-radius: 10px;
   text-align: center;
   width: fit-content;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.bg-col3:hover {
+  padding: 10px;
+  opacity: 0.5;
+  font-weight: bold;
 }
 .bg-col4 {
   background-color: #bbe4e9;
@@ -115,7 +120,9 @@ ul li {
   text-transform: capitalize;
 }
 .mb {
-  margin: auto;
+  font-size: larger;
+  font-weight: bold;
+  margin-left: 10px;
 }
 .temp-design {
   color: dimgrey;
