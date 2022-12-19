@@ -43,10 +43,10 @@ ul li {
 }
 .bg-col3 {
   background-color: #fff;
-  margin: 20px 5px;
+  margin: 15px auto;
   border-radius: 10px;
   text-align: center;
-
+  width: fit-content;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .bg-col4 {
@@ -113,4 +113,10 @@ ul li {
 }
 #description:first-letter {
   text-transform: capitalize;
+}
+.mb {
+  margin: auto;
+}
+.temp-design {
+  color: dimgrey;
 }

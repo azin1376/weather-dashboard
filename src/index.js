@@ -98,34 +98,38 @@ function celTemp(event) {
   cel.classList.add("active");
 }
 function desplayForecast(response) {
+  console.log(response);
   let forecast = response.data.daily;
   forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
+    console.log(forecastDay);
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-        `<div class="col-1 bg-col3">
+        `<div class="col-2 bg-col3">
             <ul class="ul-style1">
               <li>${formatDay(forecastDay.time)}</li>
               <li>
                 <img
                   src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-                    forecastDay.icon
+                    forecastDay.condition.icon
                   }.png"
                 />
               </li>
-              <li><strong>${forecastDay.temperature.maximum}</strong> <span>${
-          forecastDay.temperature.minimum
-        }</span></li>
-            </ul>
-
-          `;
+              <li>
+              <strong>${Math.round(forecastDay.temperature.maximum)}°</strong> 
+               <span class="temp-design">${Math.round(
+                 forecastDay.temperature.minimum
+               )}°</span>
+               </li>
+            </ul> 
+        </div> `;
     }
   });
 
-  forecastHTML = forecastHTML + `</div>`;
+  // forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 function formatDay(timesTemp) {
