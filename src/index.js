@@ -46,6 +46,10 @@ function formatDate(timesTemp) {
   return `Last updated: ${day} ${hour}:${min}`;
 }
 function showTemp(response) {
+  if (response.data.message !== undefined) {
+    document.querySelector("h1").innerHTML = "No match found.";
+    return;
+  }
   document.querySelector(
     "h1"
   ).innerHTML = `${response.data.city}, ${response.data.country}`;
@@ -76,6 +80,8 @@ function showTemp(response) {
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
   getForecast(response.data.coordinates);
+  far.classList.remove("active");
+  cel.classList.add("active");
 }
 function getForecast(coordinates) {
   let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
@@ -147,7 +153,6 @@ let cel = document.querySelector("#cel");
 cel.addEventListener("click", celTemp);
 search.addEventListener("submit", getCity);
 current.addEventListener("click", getLocation);
-
 far.addEventListener("click", farTemp);
 searchCity("Ahvaz");
-desplayForecast();
+//desplayForecast();
